@@ -56,37 +56,6 @@
   width: (@w / @vw);
   height: (@h / @vw);
 }
-.lt(@l: 0, @t: 0) {
-  position: absolute;
-  left: (@l / @vw);
-  top: (@t / @vw);
-}
-.rt(@r: 0, @t: 0) {
-  position: absolute;
-  right: (@r / @vw);
-  top: (@t / @vw);
-}
-.lb(@l: 0, @b: 0) {
-  position: absolute;
-  left: (@l / @vw);
-  bottom: (@b / @vw);
-}
-.rb(@r: 0, @b: 0) {
-  position: absolute;
-  right: (@r / @vw);
-  bottom: (@b / @vw);
-}
-.cl(@w) {
-  position: absolute;
-  left: 50%;
-  margin-left: (-@w / 2 / @vw);
-}
-
-.ct(@h) {
-  position: absolute;
-  top: 50%;
-  margin-top: (-@h / 2 / @vw);
-}
 body,
 html {
   width: 100%;
@@ -167,31 +136,30 @@ html {
     }
     .share {
       display: block;
-      width: (44 / @vw);
+      width: (120 / @vw);
       height: (44 / @vw);
-      margin-right: (24 / @vw);
+      margin-right: (30 / @vw);
       background: url("../assets/img/share.png");
       background-size: 100% 100%;
     }
     .login {
       display: block;
-      width: (44 / @vw);
+      width: (120 / @vw);
       height: (44 / @vw);
-      margin-right: (24 / @vw);
+      margin-right: (30 / @vw);
       background: url("../assets/img/login.png");
       background-size: 100% 100%;
     }
     .homeback {
       display: block;
-      width: (44 / @vw);
+      width: (120 / @vw);
       height: (44 / @vw);
-      margin-right: (24 / @vw);
+      margin-right: (80 / @vw);
       background: url("../assets/img/homeback.png");
       background-size: 100% 100%;
     }
   }
   .navmore {
-    display: none;
     position: fixed;
     top: (4 / @vw);
     right: 0;
@@ -216,7 +184,7 @@ html {
     border-bottom: (10 / @vw) solid #eee;
     a {
       display: block;
-      width: (494 / @vw);
+      width: (247 / @vw);
       height: (60 / @vw);
       text-align: center;
       line-height: (60 / @vw);
@@ -228,43 +196,37 @@ html {
     width: 100%;
     height: (1116 / @vw);
     overflow: hidden;
-    li {
-      width: (1516 / @vw);
-      height: (194 / @vw);
-      background-color: #fff;
-      text-align: left;
-      margin-left: (20 / @vw);
-      border-bottom: 1px solid #eee;
-      a {
-        display: block;
-        width: 100%;
-        height: (88 / @vw);
-        font-size: (24 / @vw);
-        margin-bottom: (10 / @vw);
-        padding-left: (20 / @vw);
-      }
-      span {
-        display: block;
-        font-size: (30 / @vw);
-        color: #f00;
-        font-weight: 600;
-        padding-left: (20 / @vw);
+    ul {
+      width: 100%;
+      height: 100%;
+      li {
+        width: (1516 / @vw);
+        height: (160 / @vw);
+        background-color: #fff;
+        text-align: left;
+        margin-left: (20 / @vw);
+        border-bottom: 1px solid #eee;
+        a {
+          display: block;
+          width: 100%;
+          height: (88 / @vw);
+          line-height: (88 / @vw);
+          font-size: (28 / @vw);
+          margin-bottom: (10 / @vw);
+          padding-left: (20 / @vw);
+        }
+        span {
+          overflow: hidden;
+          display: block;
+          height: (30 / @vw);
+          line-height: (32 / @vw);
+          font-size: (32 / @vw);
+          color: #f00;
+          font-weight: 600;
+          padding-left: (20 / @vw);
+        }
       }
     }
   }
 }
 </style>
-<script>
-export default {
-  data () {
-    return {
-      modelData: []
-    }
-  },
-  mounted () {
-    this.$http.get('index.php/api/models/list').then((res) => {
-      this.modelData = res.filter((val, index) => index <= 5)
-    })
-  }
-}
-</script>
