@@ -15,6 +15,37 @@
       <i></i>
       <i></i>
     </div>
+    <div class="topmodel">
+      <a href="javascript:;">高端模特</a>
+    </div>
+    <div class="center">
+      <ul>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+        <li>
+          <a href="javascript:;">成都夜总会模特</a>
+          <span>￥1500元</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <style lang="less" scoped>
@@ -69,13 +100,14 @@ html {
   min-height: 300px;
   overflow: hidden;
   .topfunction {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: (40 / @vw);
     display: flex;
     align-items: center;
+    background-color: #fff;
     .return {
       display: block;
       width: (15 / @vw);
@@ -86,8 +118,8 @@ html {
       &::after {
         content: "";
         display: inline-block;
-        width: 10px;
-        height: 10px;
+        width: (10 / @vw);
+        height: (10 / @vw);
         border-left: 1px solid #444;
         border-top: 1px solid #444;
         transform: rotate(-45deg);
@@ -99,7 +131,7 @@ html {
       align-items: center;
       width: (570 / @vw);
       height: (30 / @vw);
-      margin: 0 10px;
+      margin: 0 (10 / @vw);
       background-color: #f2f2f2;
       border-radius: (30 / @vw);
       i {
@@ -112,8 +144,8 @@ html {
           position: absolute;
           top: 0;
           left: 0;
-          width: 11px;
-          height: 11px;
+          width: (11 / @vw);
+          height: (11 / @vw);
           border: 1px solid #999;
           border-radius: 50%;
         }
@@ -121,45 +153,45 @@ html {
           content: "";
           position: absolute;
           bottom: 0;
-          right: 2px;
+          right: (2 / @vw);
           width: 1px;
-          height: 5px;
+          height: (5 / @vw);
           background: #999;
           transform: rotate(-45deg);
         }
       }
       span {
-        font-size: 11px;
+        font-size: (11 / @vw);
         color: #ccc;
       }
     }
-    .share{
-        display: block;
-        width: (22 / @vw);
-        height: (22 / @vw);
-        margin-right: (12 / @vw);
-        background: url("../assets/img/share.png");
-        background-size: 100% 100%;
+    .share {
+      display: block;
+      width: (22 / @vw);
+      height: (22 / @vw);
+      margin-right: (12 / @vw);
+      background: url("../assets/img/share.png");
+      background-size: 100% 100%;
     }
-    .login{
-        display: block;
-        width: (22 / @vw);
-        height: (22 / @vw);
-        margin-right: (12 / @vw);
-        background: url("../assets/img/login.png");
-        background-size: 100% 100%;
+    .login {
+      display: block;
+      width: (22 / @vw);
+      height: (22 / @vw);
+      margin-right: (12 / @vw);
+      background: url("../assets/img/login.png");
+      background-size: 100% 100%;
     }
-    .homeback{
-        display: block;
-        width: (22 / @vw);
-        height: (22 / @vw);
-        margin-right: (12 / @vw);
-        background: url("../assets/img/homeback.png");
-        background-size: 100% 100%;
+    .homeback {
+      display: block;
+      width: (22 / @vw);
+      height: (22 / @vw);
+      margin-right: (12 / @vw);
+      background: url("../assets/img/homeback.png");
+      background-size: 100% 100%;
     }
   }
   .navmore {
-    position: absolute;
+    position: fixed;
     top: (2 / @vw);
     right: 0;
     width: (32 / @vw);
@@ -174,5 +206,64 @@ html {
       background-color: #3cb5d5;
     }
   }
+  .topmodel {
+    width: 100%;
+    height: (30 / @vw);
+    margin-top: (40 / @vw);
+    background-color: #fff;
+    text-align: left;
+    border-bottom: (5 / @vw) solid #eee;
+    a {
+      display: block;
+      width: (247 / @vw);
+      height: (30 / @vw);
+      text-align: center;
+      line-height: (30 / @vw);
+      font-size: (13 / @vw);
+      color: #525252;
+    }
+  }
+  .center {
+    width: 100%;
+    height: (558 / @vw);
+    overflow: hidden;
+    li {
+      width: (758 / @vw);
+      height: (93 / @vw);
+      background-color: #fff;
+      text-align: left;
+      margin-left: (10 / @vw);
+      border-bottom: 1px solid #eee;
+      a {
+        display: block;
+        width: 100%;
+        height: (44 / @vw);
+        font-size: (14 / @vw);
+        margin-bottom: (5 / @vw);
+        padding-left: (10 / @vw);
+      }
+      span {
+        display: block;
+        font-size: (15 / @vw);
+        color: #f00;
+        font-weight: 600;
+        padding-left: (10 / @vw);
+      }
+    }
+  }
 }
 </style>
+<script>
+export default {
+  data () {
+    return {
+      modelData: []
+    }
+  },
+  mounted () {
+    this.$http.get('index.php/api/models/list').then((res) => {
+      this.modelData = res.filter((val, index) => index <= 5)
+    })
+  }
+}
+</script>
