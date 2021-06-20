@@ -2,7 +2,7 @@
   <div class="content">
     <div class="scrollfixed">
       <ul>
-        <li>
+        <li @click="back">
           <span></span>
         </li>
         <li>
@@ -23,7 +23,7 @@
       <img src="../assets/img/ellipsisMenu.png" alt="" />
     </div>
     <div class="centerimg">
-      <img src="../assets/img/img1_1.jpg" alt="" />
+      <img :src="imgUrl + img" alt="" />
     </div>
     <div class="center">
       <div class="contertop">
@@ -46,7 +46,7 @@
           <h2>产品说明</h2>
         </div>
         <div class="detionimg">
-          <img src="../assets/img/img1_1.jpg" alt="" />
+          <img :src="imgUrl + img" alt="" />
         </div>
       </div>
       <div class="related">
@@ -55,12 +55,12 @@
         </div>
         <div class="relatedoption">
           <ul>
-            <li>
-              <img src="" alt="" />
-              <i>成都夜场模特</i>
+            <li v-for="val in relatedData" :key="val.id" @click="getData(val.id)">
+              <img :src="imgUrl + val.image" alt="" />
+              <i>{{val.title}}</i>
               <div class="optionprice">
                 <span>￥</span>
-                <span>1500</span>
+                <span>{{val.price}}</span>
               </div>
             </li>
           </ul>
@@ -90,11 +90,9 @@ html {
   min-height: 300px;
   overflow: hidden;
   .scrollfixed {
-    display: none;
     width: 100%;
     height: (110 / @vw);
     background-color: #fff;
-    opacity: 0;
     ul {
       display: flex;
       align-items: center;
@@ -203,7 +201,7 @@ html {
   }
   .center {
     width: 100%;
-    height: (2128 / @vw);
+    margin-bottom: 92/@vw;
     background-color: #eee;
     .contertop {
       width: 100%;
@@ -293,7 +291,6 @@ html {
     }
     .related {
       width: 100%;
-      height: (796 / @vw);
       padding: (34 / @vw) 0 (30 / @vw);
       background-color: #fff;
       .relatedtop {
@@ -309,13 +306,12 @@ html {
       }
       .relatedoption {
         width: (700 / @vw);
-        height: (702 / @vw);
         margin: 0 auto;
         ul {
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-between;
           width: 100%;
-          height: 100%;
           li {
             width: (220 / @vw);
             height: (342 / @vw);
@@ -353,3 +349,41 @@ html {
   }
 }
 </style>
+<script>
+export default {
+    name: 'model2',
+    data () {
+        return {
+            data: [],
+            relatedData: [],
+            index: 0,
+            img: '',
+            title: '',
+            navflag: false
+        }
+    },
+    methods: {
+        getData (id) {
+            this.relatedData = this.data.filter(val => id !== val.id)
+            this.index = this.data.findIndex(val => id === val.id)
+            this.img = this.data[this.index].image
+            this.title = this.data[this.index].title
+        },
+        back () {
+            this.$router.go(-1)
+        }
+    },
+    mounted () {
+        var id = parseInt(this.$route.params.id)
+        this.$http.get('http://49.235.93.38:82/index.php/api/models/list').then(res => {
+            if (res) {
+                this.data = res
+                this.relatedData = this.data.filter(val => id !== val.id)
+                this.index = this.data.findIndex(val => id === val.id)
+                this.img = this.data[this.index].image
+                this.title = this.data[this.index].title
+            }
+        })
+    }
+}
+</script>

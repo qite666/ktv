@@ -21,42 +21,37 @@ const routes = [
         path: '/index',
         name: 'Index',
         component: () => import('../components/Index.vue')
+      },
+      {
+        path: '/aboutus',
+        name: 'AboutUs',
+        component: () => import('../components/AboutUs.vue')
+      },
+      {
+        path: '/aboutus2/:id',
+        name: 'AboutUs2',
+        component: () => import('../components/AboutUs2.vue')
+      },
+      {
+        path: '/journalism',
+        name: 'Journalism',
+        component: () => import('../components/Journalism.vue')
+      },
+      {
+        path: '/modelshow',
+        name: 'ModelShow',
+        component: () => import('../components/ModelShow.vue')
+      },
+      {
+        path: '/newsdetails/:id',
+        name: 'NewsDetails',
+        component: () => import('../components/NewsDetails.vue')
+      },
+      {
+        path: '/modelshow2/:id',
+        name: 'ModelShow2',
+        component: () => import('../components/ModelShow2.vue')
       }
-      // {
-      //   path: '/aboutus',
-      //   name: 'AboutUs',
-      //   component: () => import('../components/AboutUs.vue')
-      // },
-      // {
-      //   path: '/environmental',
-      //   name: 'Environmental',
-      //   component: () => import('../components/Environmental.vue')
-      // },
-      // {
-      //   path: '/journalism',
-      //   name: 'Journalism',
-      //   component: () => import('../components/Journalism.vue')
-      // },
-      // {
-      //   path: '/modelshow',
-      //   name: 'ModelShow',
-      //   component: () => import('../components/ModelShow.vue')
-      // },
-      // {
-      //   path: '/newsdetails/:id',
-      //   name: 'NewsDetails',
-      //   component: () => import('../components/NewsDetails.vue')
-      // },
-      // {
-      //   path: '/environmentaldetails/:id',
-      //   name: 'EnvironmentalDetails',
-      //   component: () => import('../components/EnvironmentalDetails.vue')
-      // },
-      // {
-      //   path: '/modelshow2/:id',
-      //   name: 'ModelShow2',
-      //   component: () => import('../components/ModelShow2.vue')
-      // }
     ]
   }
 ]

@@ -12,5 +12,10 @@
   text-align: center;
   color: #2c3e50;
 }
-
+body {
+  max-width: 750px;
+  min-width: 320px;
+  background-color: #f7f7f7 !important;
+  /* overflow: hidden; */
+}
 </style>

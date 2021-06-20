@@ -1,12 +1,11 @@
 <template>
-<div>
   <footer>
     <ul>
       <li>
-        <a href="javascript:;" class="current">
+        <router-link to="/index" class="current">
           <img src="../assets/img/tu1.png" alt="">
           <span>首页</span>
-        </a>
+        </router-link>
       </li>
       <li>
         <a href="tel:13688143752">
@@ -14,21 +13,20 @@
           <span>电话</span>
         </a>
       </li>
-      <li>
+      <li @click="wxfx(true)">
         <a href="javascript:;">
           <img src="../assets/img/tu3.png" alt="">
           <span>微信咨询</span>
         </a>
       </li>
     </ul>
-    <div class="wxServerAlt">
+    <div class="wxServerAlt" v-if="wxflag" @click.self="wxfx(false)">
       <div class="altMain">
         <div><img src="../assets/img/tu4.png" alt=""></div>
         <span>长按识别二维码</span>
       </div>
     </div>
   </footer>
-</div>
 </template>
 <style lang="less">
 @import "../assets/css/reset.css";
@@ -37,11 +35,15 @@
 footer {
   position: fixed;
   left: 50%;
-  margin-left: -50%;
+  margin-left: -375/@vw;
   bottom: 0;
-  width: 100%;
+  width: 750/@vw;
   height: 92/@vw;
   background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  max-width: 750px;
+  min-width: 320px;
+  overflow: hidden;
   ul {
     display: flex;
     justify-content: space-around;
@@ -107,3 +109,17 @@ footer {
   }
 }
 </style>
+<script>
+export default {
+  data () {
+    return {
+      wxflag: false
+    }
+  },
+  methods: {
+    wxfx (flag) {
+      this.wxflag = flag
+    }
+  }
+}
+</script>

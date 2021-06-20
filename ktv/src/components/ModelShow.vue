@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="topfunction">
-      <a href="javascript:;" class="return"></a>
+      <a href="javascript:;" class="return" @click="back"></a>
       <div class="seach">
         <i></i>
         <span>请输入您要搜索的内容</span>
@@ -10,42 +10,38 @@
       <a href="javascript:;" class="login"></a>
       <a href="javascript:;" class="homeback"></a>
     </div>
-    <div class="navmore">
-      <i></i>
-      <i></i>
-      <i></i>
-    </div>
     <div class="topmodel">
       <a href="javascript:;">高端模特</a>
     </div>
     <div class="center">
       <ul>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
-        </li>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
-        </li>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
-        </li>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
-        </li>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
-        </li>
-        <li>
-          <a href="javascript:;">成都夜总会模特</a>
-          <span>￥1500元</span>
+        <li v-for="val in listData" :key="val.id">
+          <router-link :to="/modelshow2/ + val.id">{{val.title}}</router-link>
+          <span>￥{{val.price}}</span>
         </li>
       </ul>
     </div>
+    <div class="navmore" @click="navFlag">
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+        <nav @click="navFlag" v-if="navflag">
+            <ul>
+                <li>
+                    <router-link to="/index">首页</router-link>
+                </li>
+                <li>
+                    <router-link to="/journalism">夜场新闻</router-link>
+                </li>
+                <li>
+                    <router-link to="/aboutus">联系我们</router-link>
+                </li>
+                <li>
+                    <router-link to="/modelshow">模特展示</router-link>
+                </li>
+            </ul>
+        </nav>
   </div>
 </template>
 <style lang="less" scoped>
@@ -159,22 +155,6 @@ html {
       background-size: 100% 100%;
     }
   }
-  .navmore {
-    position: fixed;
-    top: (4 / @vw);
-    right: 0;
-    width: (64 / @vw);
-    height: (64 / @vw);
-    border: 1px solid #3cb5d5;
-    border-radius: (64 / @vw);
-    i {
-      display: block;
-      width: (44 / @vw);
-      height: (4 / @vw);
-      margin: (12 / @vw) auto 0;
-      background-color: #3cb5d5;
-    }
-  }
   .topmodel {
     width: 100%;
     height: (60 / @vw);
@@ -204,7 +184,6 @@ html {
         height: (160 / @vw);
         background-color: #fff;
         text-align: left;
-        margin-left: (20 / @vw);
         border-bottom: 1px solid #eee;
         a {
           display: block;
@@ -228,5 +207,84 @@ html {
       }
     }
   }
+  .navmore {
+        position: fixed;
+        z-index: 1;
+        top: (4 / @vw);
+        right: 8/@vw;
+        width: (64 / @vw);
+        height: (64 / @vw);
+        border: 1px solid #3cb5d5;
+        border-radius: (64 / @vw);
+        background-color: #fff;
+        i {
+            display: block;
+            width: (44 / @vw);
+            height: (4 / @vw);
+            margin: (12 / @vw) auto 0;
+            background-color: #3cb5d5;
+        }
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 750/@vw;
+        height: 100%;
+        background: rgba(0, 0, 0, .5);
+        ul {
+            width: 450/@vw;
+            float: right;
+            height: 100%;
+            padding: 20/@vw 0;
+            box-shadow: -2px 0 5px #000;
+            li {
+                margin: 30/@vw;
+                border-bottom: 4/@vw solid #45494C;
+                a {
+                    display: block;
+                    font-size: 34/@vw;
+                    color: #fff;
+                    text-align: left;
+                    padding: 10/@vw 0 10/@vw 50/@vw ;
+                }
+            }
+        }
+    }
 }
 </style>
+<script>
+export default {
+    data () {
+        return {
+            listData: [],
+            navflag: false
+        }
+    },
+    methods: {
+        gettype (id) {
+            this.$http.get('/index.php/api/journalism/list?pageNumber=1&pageSize=21&journalismtypeid=' + id).then(res => {
+                console.log(res)
+                this.listData = res
+            })
+        },
+        navFlag () {
+            if (this.navflag) {
+                this.navflag = false
+            } else {
+                this.navflag = true
+            }
+        },
+        back () {
+            this.$router.go(-1)
+        }
+    },
+    mounted () {
+      this.$http.get('http://49.235.93.38:82/index.php/api/models/list').then(res => {
+        if (res) {
+          this.listData = res
+        }
+      })
+    }
+}
+</script>
